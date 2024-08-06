@@ -7,10 +7,8 @@ module.exports = roomHandler = (socket, io) => {
     rooms[roomId] = []
     socket.emit("room-created", { roomId, from: socket.id })
   }
-  const joinRoom = ({ roomId, peerId }) => {
-    if (typeof peerId == "undefined") {
-      peerId = socket.id
-    }
+  const joinRoom = ({ roomId }) => {
+    peerId = socket.id
     if (!rooms[roomId]) rooms[roomId] = []
     if (rooms[roomId]) {
       if (typeof peerId != "undefined") {
